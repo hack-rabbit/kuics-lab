@@ -10,7 +10,7 @@ from django.db.models import Q
 from django.utils import timezone
 
 from django.contrib.auth.models import User
-from ctf.models import Challenge, Profile, Solve
+from ctf.models import Challenge, Difficulty, Profile, Solve
 
 from django.http import HttpResponseRedirect
 
@@ -21,8 +21,12 @@ class ChallengeLV(LoginRequiredMixin, ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(ChallengeLV, self).get_context_data(*args, **kwargs)
-        context['learn_linux_list'] = Challenge.objects.filter(Q(difficulty='Learn Linux')).order_by('points')
-        context['beginner_list'] = Challenge.objects.filter(Q(difficulty='Beginner')).order_by('points')
+        difficulty_list = Difficulty.objects.all().order_by('level')
+        
+        context['challenge_list_all'] = dict()
+        for d in difficulty_list:
+            context['challenge_list_all'][d.name] = Challenge.objects.filter(Q(difficulty=d)).order_by('points')
+
         return context
 
 

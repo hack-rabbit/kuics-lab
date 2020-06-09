@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/Users/james/.pyenv/versions/kuics-lab/bin/python"
+    "python.pythonPath": "/Users/james/.pyenv/versions/kuics-lab/bin/python",
+    "python.linting.pylintArgs": ["--load-plugins", "pylint_django"]
 }

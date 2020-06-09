@@ -36,27 +36,30 @@
 {% block content %}
 <div class="content">
     <!-- Challenge List -->
+    {% for difficulty, challenge_list in challenge_list_all.items %}
+    {% if challenge_list|length %}
     <div class="section">
         <div class="heading">
-            Learn Linux
+            {{ difficulty }}
         </div>
         <div class="table">
             <table class="table-responsive">
                 <tr>
-                    {% for object in learn_linux_list %}
+                    {% for challenge in challenge_list %}
                     <td>
-                        {% if user in object.solvers.all %}
+                        {% if user in challenge.solvers.all %}
                         <div class="card challenge challenge-solved" style="width: 18rem;">
                             {% else %}
                             <div class="card challenge" style="width: 18rem;">{% endif %}
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ object.title }}&nbsp;<span class="challenge-points">[{{ object.points }}p]</span>
+                                    <h5 class="card-title">{{ challenge.title }}&nbsp;<span class="challenge-points">[{{ challenge.points }}p]</span>
                                     </h5>
-                                    <button type="button" class="btn btn-secondary" disabled>{{ object.category }}
+                                    <button type="button" class="btn btn-secondary" disabled>{{ challenge.category }}
                                     </button>
-                                    <a href="{% url 'ctf:detail' object.id %}" class="stretched-link"></a>
+                                    <a href="{% url 'ctf:detail' challenge.id %}" class="stretched-link"></a>
                                 </div>
                             </div>
+                        </div>
                     </td>
                     {% if forloop.counter|divisibleby:4 %}
                 </tr>
@@ -68,39 +71,8 @@
             </table>
         </div>
     </div>
-    <div class="section">
-        <div class="heading">
-            Beginner
-        </div>
-        <div class="table">
-            <table class="table-responsive">
-                <tr>
-                    {% for object in beginner_list %}
-                    <td>
-                        {% if user in object.solvers.all %}
-                        <div class="card challenge-solved" style="width: 18rem;">
-                            {% else %}
-                            <div class="card challenge" style="width: 18rem;">{% endif %}
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ object.title }}&nbsp;<span class="challenge-points">[{{ object.points }}p]
-                                    {% if user in object.solvers.all %}&nbsp;&#x2714;{% endif %}</span>
-                                    </h5>
-                                    <button type="button" class="btn btn-secondary" disabled>{{ object.category }}
-                                    </button>
-                                    <a href="{% url 'ctf:detail' object.id %}" class="stretched-link"></a>
-                                </div>
-                            </div>
-                    </td>
-                    {% if forloop.counter|divisibleby:4 %}
-                </tr>
-                <tr>
-                    {% endif %}
-                    {% empty %}
-                    {% endfor %}
-                </tr>
-            </table>
-        </div>
-    </div>
+    {% endif %}
+    {% endfor %}
 </div>
 {% endblock content %}
 

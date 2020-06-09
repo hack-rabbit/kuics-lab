@@ -14,6 +14,21 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = 'categories'
+
+
+# CTF challenge difficulties
+class Difficulty(models.Model):
+    name = models.CharField(max_length=30)
+    level = models.IntegerField()
+
+    def __str__(self):
+        return '{} ({})'.format(self.name, self.level)
+
+    class Meta:
+        verbose_name_plural = 'difficulties'
+
 
 # CTF challenges
 class Challenge(models.Model):
@@ -22,7 +37,7 @@ class Challenge(models.Model):
     # Challenge category e.g. Reverse Engineering, Pwn
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     # Challenge difficulty e.g. Easy, Medium, Hard
-    difficulty = models.CharField(max_length=30)
+    difficulty = models.ForeignKey(Difficulty, on_delete=models.CASCADE)
     # Challenge description text
     description = RichTextField()
     # Reward points for solving
