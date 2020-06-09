@@ -1,0 +1,43 @@
+{% extends "nav.html" %}
+{% load static %}
+
+{% block extra-style %}
+{{ block.super }}
+<link href="{% static 'css/challenge_detail.css' %}" rel="stylesheet">
+<link href="{% static 'css/footer.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="section">
+    <div class="heading">{{ object.title }}</div>
+    {% if user in object.solvers.all %}
+    <div class="article solved">
+        <div class="alert alert-success">You already solved this challenge.</div>
+    </div>
+    {% elif object.is_fixed_point %}
+    <div class="article fixed-point">
+        <div class="alert alert-info">This is a <strong>fixed point</strong> challenge. You will get a same point no matter how early you solved it.</div>
+    </div>
+    {% endif %}
+    <div class="article">
+        {{ object.description|safe }}
+    </div>
+    <div class="flag-form">
+        <div class="flag-form-title">Flag</div>
+        <p>Please submit your flag below.</p>
+        <form action="{% url 'ctf:submit' object.id %}" method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="text" name="flag"/>
+            </div>
+            <input type="hidden" name="challenge_id" value="{{ object.id }}"/>
+            <input type="hidden" name="user_id" value="{{ user.id }}"/>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

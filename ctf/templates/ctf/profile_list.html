@@ -1,0 +1,72 @@
+{% extends "nav.html" %}
+{% load static %}
+
+{% block extra-style %}
+{{ block.super }}
+<link href="{% static 'css/profile_list.css' %}" rel="stylesheet">
+<link href="{% static 'css/footer.css' %}" rel="stylesheet">
+
+<style type="text/css">
+    .image {
+        background-color: #490D40;
+        background: url('{% static "img/leaderboard.png" %}') no-repeat center;
+        background-position: 50% 25%;
+        background-size: cover;
+        height: 15em;
+        min-height: 15em;
+        position: relative;
+        margin-bottom: 1.8em;
+    }
+</style>
+{% endblock %}
+
+{% block extended-nav %}
+<div class="image" id="image">
+    <div class="image-caption">
+        <div class="image-caption-title">
+            Leaderboard
+        </div>
+        <div class="image-caption-text">
+            Current scoreboard for leading competitors.
+        </div>
+    </div>
+</div>
+{% endblock extended-nav %}
+
+{% block content %}
+<div class="content" id="content">
+    <!-- Challenge List -->
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Players</th>
+            <th scope="col">Total</th>
+            <th scope="col">Last Submit</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in object_list %}
+        <tr>
+            <td scope="row">
+                {{ forloop.counter }}
+            </td>
+            <td>
+                {{ object.user.username }}
+            </td>
+            <td>
+                {{ object.score }}
+            </td>
+            <td>
+                {{ object.last_submit|date:"Y-m-d H:i:s" }}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

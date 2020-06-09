@@ -1,0 +1,102 @@
+/* Global */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: #303030;
+}
+
+/* Navigation Bar */
+/* Implemented in login.html */
+
+/* Content */
+.container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    width: 600px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(20, 20, 20);
+    border: none;
+    border-radius: 0px;
+}
+
+.card-header {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+.card-header h3 {
+    font-family: "Product Sans";
+    font-weight: bolder;
+}
+
+.form-error {
+    color: rgb(255, 0, 0);
+    margin-bottom: -24px;
+}
+
+.card-body {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+}
+
+.card-footer {
+    height: 84px !important;
+}
+
+.input-group {
+    width: 75%;
+    border-bottom: 1px solid grey;
+}
+
+.input-group input {
+    border: none;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.input-group input:focus {
+    border: none;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.login_btn {
+    color: rgb(230, 230, 230);
+    background-color: rgb(10, 10, 10);
+    width: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.login_btn:hover {
+    color: rgb(30, 30, 30);
+    background-color: rgb(230, 230, 230);
+}
+
+.card-footer {
+    background-color: rgb(10,10,10);
+    color: rgb(230, 230, 230);
+    height: 100px;
+    padding-top: 16px;
+    border: none;
+    border-radius: 0px !important;
+}
+
+.card-footer a:link, .card-footer a:visited {
+    color: rgb(176, 224, 230);
+    text-decoration: none;
+}
+
+.card-footer a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,41 @@
+/* Navigation Bar */
+.navbar {
+    padding-left: 1em;
+    padding-right: 1em;
+    font-family: "Product Sans";
+}
+
+.navbar-brand {
+    font-size: 17px;
+}
+
+.navbar-collapse {
+    font-size: 14px;
+}
+
+/* Image */
+.image-caption {
+    position: absolute;
+    left: 1.8em;
+    right: 1.8em;
+    bottom: 1.8em;
+    color: #EEEEEE;
+    font-family: "Product Sans";
+}
+
+.image-caption-title {
+    font-size: 35px;
+}
+
+.image-caption-text {
+    font-size: 17px;
+}
+
+/* Affix */
+.navbar {
+    transition: all 0.2s ease-out;
+}
+
+.affix.navbar {
+    background-color: #303030;
+}

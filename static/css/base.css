@@ -1,0 +1,36 @@
+/* Master CSS */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px; /* Margin bottom by footer height */
+}
+
+.container {
+  padding-bottom: 2.2em;
+}
+
+code {
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 2px;
+  background-color: #EEEEEE !important;
+  color: #222222 !important;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section .heading {
+    font-family: "Product Sans";
+    font-weight: bold;
+    font-size: 21px;
+    margin-bottom: 5px;
+}
+
+.section .article {
+    font-size: 15px;
+}

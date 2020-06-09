@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra-style %}
+<link href="{% static 'css/base.css' %}" rel="stylesheet">
+<link href="{% static 'css/nav.css' %}" rel="stylesheet">
+<link href="{% static 'css/fonts.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block extra-script %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var toggleAffix = function (affixElement, scrollElement, wrapper) {
+            var height = affixElement.outerHeight(),
+                top = wrapper.offset().top - 240;
+            if (scrollElement.scrollTop() >= top) {
+                affixElement.addClass("affix");
+            } else {
+                affixElement.removeClass("affix");
+            }
+        };
+
+        $('[data-toggle="affix"]').each(function () {
+            var ele = $(this),
+                wrapper = $('#container');
+            $(window).on('scroll resize', function () {
+                toggleAffix(ele, $(this), wrapper);
+            });
+            // init
+            toggleAffix(ele, $(window), wrapper);
+        });
+    });
+</script>
+{% endblock %}
+
+{% block nav %}
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark" data-toggle="affix">
+    <a id="brand" class="navbar-brand" href="/"><strong>KUICSLAB</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <!-- ul for right side items -->
+        </ul>
+        <ul class="navbar-nav navbar-ul-right">
+            <!-- Navbar Menu -->
+            {% if not hide_menu %}
+            {% if user.is_active %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">
+                    {{ user.username }}&nbsp;({{ user.profile.score }}pt)
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'ctf:leaderboard' %}">Leaderboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'ctf:list' %}">Challenges</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'registration' %}">Register</a>
+            </li>
+            {% endif %}
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+{% block extended-nav %}
+{% endblock extended-nav %}
+
+{% endblock nav %}

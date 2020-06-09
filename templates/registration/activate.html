@@ -1,0 +1,49 @@
+{% extends "nav.html" %}
+
+{% load static %}
+
+{% block extra-style %}
+{{ block.super }}
+<link href="{% static 'css/accounts.css' %}" rel="stylesheet">
+<link href="{% static 'css/footer.css' %}" rel="stylesheet">
+
+<style type="text/css">
+    .image {
+        background-color: #490D40;
+        background: url('{% static "img/accounts.png" %}') no-repeat center;
+        background-position: 50% 35%;
+        background-size: cover;
+        height: 15em;
+        position: relative;
+        margin-bottom: 1.8em;
+    }
+</style>
+{% endblock %}
+
+{% block extended-nav %}
+<div class="image">
+    <div class="image-caption">
+        <div class="image-caption-title">
+            Accounts
+        </div>
+        <div class="image-caption-text">
+            Only member who has activated his/her account can solve challenges.
+        </div>
+    </div>
+</div>
+{% endblock extended-nav %}
+
+{% block content %}
+<div class="content">
+	<div class="section">
+	<div class="heading">Activation Error</div>
+	<div class="article">
+		<div class="alert alert alert-danger">There was a problem activating your account.</div>
+	</div>
+	</div>
+</div>
+{% endblock content %}
+
+{% block footer %}
+  {% include 'footer.html' %}
+{% endblock footer %}

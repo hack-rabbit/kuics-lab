@@ -1,0 +1,62 @@
+{% extends "nav.html" %}
+
+{% load static %}
+
+{% block extra-style %}
+{{ block.super }}
+<link href="{% static 'css/login.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block nav %}
+{% with hide_menu=True %}
+{{ block.super }}
+{% endwith %}
+{% endblock nav %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3>Register</h3>
+        {% if form.errors %}
+        {% if form.errors.username %}
+        {% for error in form.errors.username %}
+        {% if forloop.last %}<p class="form-error">{{ error|escape }}</p>{% endif %}
+        {% endfor %}
+        {% elif form.errors.password2 %}
+        {% for error in form.errors.password2 %}
+        {% if forloop.last %}<p class="form-error">{{ error|escape }}</p>{% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endif %}
+    </div>
+    <div class="card-body">
+        <form action="." method="post">
+            {% csrf_token %}
+            <div class="input-group form-group">
+                {{ form.username }}
+            </div>
+            <div class="input-group form-group">
+                {{ form.email }}
+            </div>
+            <div class="input-group form-group">
+                {{ form.password1 }}
+            </div>
+            <div class="input-group form-group">
+                {{ form.password2 }}
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn float-right login_btn">
+                <input type="hidden" name="next" value="{{ next }}">
+            </div>
+        </form>
+    </div>
+    <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+            Already have an account?&nbsp;<a href="{% url 'login' %}">Sign in</a>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="#">Forgot your password?</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

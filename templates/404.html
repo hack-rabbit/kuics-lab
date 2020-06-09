@@ -1,0 +1,52 @@
+{% extends "nav.html" %}
+
+{% load static %}
+
+{% block extra-style %}
+{{ block.super }}
+<link href="{% static 'css/footer.css' %}" rel="stylesheet">
+
+<style type="text/css">
+    .image {
+        background-color: #490D40;
+        background: url('{% static "img/error.png" %}') no-repeat center;
+        background-position: 50% 30%;
+        background-size: cover;
+        height: 15em;
+        position: relative;
+        margin-bottom: 1.8em;
+    }
+
+    .alert {
+        margin-top: 15px;
+    }
+</style>
+{% endblock %}
+
+{% block extended-nav %}
+<div class="image">
+    <div class="image-caption">
+        <div class="image-caption-title">
+            Error
+        </div>
+        <div class="image-caption-text">
+            We are sorry for your inconvenience.
+        </div>
+    </div>
+</div>
+{% endblock extended-nav %}
+
+{% block content %}
+<div class="content">
+    <div class="section">
+        <div class="heading">Not Found</div>
+        <div class="article">
+            <div class="alert alert alert-danger">The content you are looking for is not on this website.</div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

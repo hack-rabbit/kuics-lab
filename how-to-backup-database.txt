@@ -1,0 +1,13 @@
+## Dump fixtures
+python manage.py dumpdata --natural --natural-foreign --natural-primary \
+--exclude contenttypes --exclude auth.permission --exclude admin.logentry \
+--exclude sessions.session --indent 4 > db.json
+
+## Load fixtures
+python manage.py loaddata ./db.json --verbosity 2
+
+## Run service
+python manage.py migrate
+python manage.py makemigrations
+# load fixtures here
+python manage.py collectstatic

@@ -1,0 +1,15 @@
+/* Leaderboard */
+.table {
+    font-size: 15px;
+}
+
+.table th {
+    line-height: .9em !important;
+    color: #000000 !important;
+    background-color: rgba(45,54,61,.3) !important;
+}
+
+.table td {
+    line-height: .9em !important;
+    border-bottom: .5px solid rgb(0,0,0);
+}

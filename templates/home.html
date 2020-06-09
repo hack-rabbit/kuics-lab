@@ -1,0 +1,77 @@
+{% extends "nav.html" %}
+
+{% load static %}
+
+{% block extra-style %}
+{{ block.super }}
+<link href="{% static 'css/home.css' %}" rel="stylesheet">
+<link href="{% static 'css/footer.css' %}" rel="stylesheet">
+
+<style type="text/css">
+    .image {
+        background-color: #490D40;
+        background: url('{% static "img/home.png" %}') no-repeat center;
+        background-position: 50% 30%;
+        background-size: cover;
+        height: 22em;
+        position: relative;
+        margin-bottom: 1.8em;
+    }
+</style>
+{% endblock %}
+
+{% block extended-nav %}
+<div class="image">
+    <div class="image-caption">
+        <div class="image-caption-title">
+            Welcome to <strong>KUICSLAB</strong>!
+        </div>
+        <div class="image-caption-text">
+            Train your cybersecurity skills and knowledge at <strong>KUICSLAB</strong>.
+        </div>
+    </div>
+</div>
+{% endblock extended-nav %}
+
+{% block content %}
+<div class="content">
+    <div class="section">
+        <div class="heading">About</div>
+        <div class="article">
+			<span class="logo-text">KUICSLAB</span> is a security wargame for students to train their cybersecurity skills and knowledge.
+        </div>
+    </div>
+    <div class="section">
+        <div class="heading">How can I participate?</div>
+        <div class="article">
+			<ul>
+				<li>Challenges will be available after registration to this website.</li>
+				<li>In order to solve challenges, you have to submit contents of the flag file, usually at <code>/home/xxx/flag</code>. </li>
+				<li>Most challenges are running on <code>Ubuntu 16.04</code> docker image.</li>
+			</ul>
+        </div>
+    </div>
+	<div class="section">
+        <div class="heading">Rules</div>
+        <div class="article">
+			<ul>
+				<li>Do not perform DoS(Denial of Service) attack on server, such as brute forcing.</li>
+				<li>If you found any unintended behavior or bugs, please report to admin.</li>
+			</ul>
+        </div>
+    </div>
+	<div class="section">
+        <div class="heading">Contact</div>
+        <div class="article">
+			<ul>
+				<li>kuicslab@gmail.com </li>
+				<li><a href="https://www.fb.com/hackrabbit">Facebook</a></li>
+			</ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

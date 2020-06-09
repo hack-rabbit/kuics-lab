@@ -1,0 +1,193 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$y7B9HekAzQib$67QuTrV+1kJlJo5cLFrBddjfNX+QszitmjCw4+4hoJ8=",
+        "last_login": "2020-04-04T12:48:40.937",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "thegreatsonga@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2020-04-01T09:57:52.275",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "ctf.category",
+    "pk": 4,
+    "fields": {
+        "name": "Linux"
+    }
+},
+{
+    "model": "ctf.category",
+    "pk": 5,
+    "fields": {
+        "name": "Reverse"
+    }
+},
+{
+    "model": "ctf.category",
+    "pk": 6,
+    "fields": {
+        "name": "Pwn"
+    }
+},
+{
+    "model": "ctf.challenge",
+    "pk": 1,
+    "fields": {
+        "title": "NC",
+        "category": 4,
+        "difficulty": "Learn Linux",
+        "description": "<p>This introductory task will show you how to approach to other chellenges.</p>\r\n\r\n<p>Most challenges are vulnerable programs that&nbsp;are running on the server as <a href=\"https://en.wikipedia.org/wiki/Daemon_(computing)\">daemons</a>. You should first know how to connect them. There is a utility for network connections which is named <code>nc</code>. In many cases, we&nbsp;will inform you a hostname and a port number where your target program is running&nbsp;like this:</p>\r\n\r\n<p><code>nc kuics.us.to 20001</code></p>\r\n\r\n<p>You can just type the command above on your terminal&nbsp;(we strongly suggest you to use Linux) to execute the program remotely. When you connect to it&nbsp;successfully, do best as you can (e.g.&nbsp;exploit the program to launch shell) to look for the flag. Type the flag below, then you will get points.</p>",
+        "points": 1,
+        "is_fixed_point": true,
+        "min_points": 0,
+        "penalty_point": 0,
+        "solvers": []
+    }
+},
+{
+    "model": "ctf.challenge",
+    "pk": 2,
+    "fields": {
+        "title": "Search",
+        "category": 4,
+        "difficulty": "Learn Linux",
+        "description": "<p><a href=\"https://en.wikipedia.org/wiki/Secure_Shell\">Secure Shell</a> (SSH) is a tool that allows you to use remote shell securely over network. Use <code>ssh</code> to connect challenge server and find the flag file. Unfortunately, it is not located at <code>/home/search/flag</code> this time. So you may need to search through whole directory... Good luck!</p>\r\n\r\n<p><code>ssh search@kuics.us.to -p20002</code> (pw:guest)</p>",
+        "points": 2,
+        "is_fixed_point": true,
+        "min_points": 0,
+        "penalty_point": 0,
+        "solvers": []
+    }
+},
+{
+    "model": "ctf.challenge",
+    "pk": 3,
+    "fields": {
+        "title": "Pattern",
+        "category": 4,
+        "difficulty": "Learn Linux",
+        "description": "<p>How will you feel if you have a permission on the flag file but cannot read it?</p>\r\n\r\n<p><code>ssh pattern@kuics.us.to -p20003</code> (pw:guest)</p>",
+        "points": 4,
+        "is_fixed_point": true,
+        "min_points": 0,
+        "penalty_point": 0,
+        "solvers": []
+    }
+},
+{
+    "model": "ctf.challenge",
+    "pk": 4,
+    "fields": {
+        "title": "Random",
+        "category": 5,
+        "difficulty": "Beginner",
+        "description": "<p>The flag for this challenge is protected by&nbsp;a super-secure encryption, and unlocked only when you know&nbsp;the passcode that changes every second!<br />\r\nFor your information, there is no vulnerability on the passcode generating procedure.</p>\r\n\r\n<p><a href=\"http://kuics.us.to:8080/bin/random\">random</a><br>\r\n<a href=\"http://kuics.us.to:8080/bin/random.c\">random.c</a></p>",
+        "points": 10,
+        "is_fixed_point": true,
+        "min_points": 0,
+        "penalty_point": 0,
+        "solvers": []
+    }
+},
+{
+    "model": "ctf.challenge",
+    "pk": 5,
+    "fields": {
+        "title": "ASM",
+        "category": 6,
+        "difficulty": "Beginner",
+        "description": "<p>A&nbsp;<a href=\"https://en.wikipedia.org/wiki/System_call\">System call</a>&nbsp;is the lowest level interface that requests privileged features to the kernel. Every time we open folder, type keyboard, launch Internet browser, etc, we are actually using many system calls.</p>\r\n\r\n<p>There are 3 necessary system calls for file opening, inputs and outputs. Practicing how to use them in Assembly could be a good learning experience.</p>\r\n\r\n<p><code>nc kuics.us.to 20004</code></p>",
+        "points": 20,
+        "is_fixed_point": true,
+        "min_points": 0,
+        "penalty_point": 0,
+        "solvers": []
+    }
+},
+{
+    "model": "ctf.challenge",
+    "pk": 6,
+    "fields": {
+        "title": "Shotgun",
+        "category": 6,
+        "difficulty": "Beginner",
+        "description": "<p>Are you brave enough to test&nbsp;your strength agianst your keyboard?</p>\r\n\r\n<p><code>nc kuics.us.to 20005</code></p>\r\n\r\n<p><a href=\"http://kuics.us.to:8080/bin/shotgun\">shotgun</a><br />\r\n<a href=\"http://kuics.us.to:8080/bin/shotgun.c\">shotgun.c</a></p>",
+        "points": 13,
+        "is_fixed_point": true,
+        "min_points": 0,
+        "penalty_point": 0,
+        "solvers": [
+            [
+                "admin"
+            ]
+        ]
+    }
+},
+{
+    "model": "ctf.flag",
+    "pk": 9,
+    "fields": {
+        "challenge": 1,
+        "flag": "LAB_{we1c0me_to_ku1csl4b!}"
+    }
+},
+{
+    "model": "ctf.flag",
+    "pk": 10,
+    "fields": {
+        "challenge": 2,
+        "flag": "LAB_{wi5h_I_h4d_a_fuz2y_f1nd3r}"
+    }
+},
+{
+    "model": "ctf.flag",
+    "pk": 11,
+    "fields": {
+        "challenge": 3,
+        "flag": "LAB_{h4d_fun_w1th_p4tt3rn_mach1n9?}"
+    }
+},
+{
+    "model": "ctf.flag",
+    "pk": 12,
+    "fields": {
+        "challenge": 4,
+        "flag": "LAB_{g3tt1ng_f4mi11ar_vvith_9db}"
+    }
+},
+{
+    "model": "ctf.flag",
+    "pk": 13,
+    "fields": {
+        "challenge": 5,
+        "flag": "LAB_{m4ybe_sh3llcr4ft_wi11_h3lp}"
+    }
+},
+{
+    "model": "ctf.flag",
+    "pk": 14,
+    "fields": {
+        "challenge": 6,
+        "flag": "LAB_{p0wer_ov3rwhe1ming}"
+    }
+},
+{
+    "model": "ctf.solve",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "challenge": 6,
+        "datetime": "2020-04-04T13:58:39.404"
+    }
+}
+]
