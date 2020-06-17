@@ -43,13 +43,14 @@ class ChallengeDV(LoginRequiredMixin, DetailView):
 
 
 # Function-based View
+# Check flag submitted by user
 def authenticate(request, challenge_id):
     flag = request.POST.get('flag', None)
     user_id = request.POST.get('user_id', None)
 
     challenge = Challenge.objects.get(pk=challenge_id)
 
-    # Already solved by requesting user
+    # Already solved by requested user
     for solver in challenge.solvers.all():
         if str(user_id) == str(solver.id):
             return HttpResponseRedirect(reverse('ctf:list'))
@@ -62,8 +63,8 @@ def authenticate(request, challenge_id):
         # Decrease points for dynamic challenge
         if not challenge.is_fixed_point:
             if challenge.points > challenge.min_points:
-                challenge.points -= challenge.penalty_point;
-        # Add challenge to challenge_set
+                challenge.points -= challenge.penalty_point
+        # Add challenge to solved set(challenge_set) of user
         user.challenge_set.add(challenge)
         # Commit changes
         user.save()

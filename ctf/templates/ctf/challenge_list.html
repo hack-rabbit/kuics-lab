@@ -3,21 +3,8 @@
 
 {% block extra-style %}
 {{ block.super }}
-<link href="{% static 'css/challenge_list.css' %}" rel="stylesheet">
+<link href="{% static 'ctf/css/challenge_list.css' %}" rel="stylesheet">
 <link href="{% static 'css/footer.css' %}" rel="stylesheet">
-
-<style type="text/css">
-    .image {
-        background-color: #490D40;
-        background: url('{% static "img/challenge.png" %}') no-repeat center;
-        background-position: 50% 25%;
-        background-size: cover;
-        height: 15em;
-        min-height: 15em;
-        position: relative;
-        margin-bottom: 1.8em;
-    }
-</style>
 {% endblock %}
 
 {% block extended-nav %}
@@ -77,5 +64,5 @@
 {% endblock content %}
 
 {% block footer %}
-{% include 'footer.html' %}
+{% include "footer.html" %}
 {% endblock footer %}

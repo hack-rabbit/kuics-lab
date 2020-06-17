@@ -19,6 +19,7 @@ class Category(models.Model):
 
 
 # CTF challenge difficulties
+# Lower levels are regarded as easier
 class Difficulty(models.Model):
     name = models.CharField(max_length=30)
     level = models.IntegerField()
@@ -31,12 +32,13 @@ class Difficulty(models.Model):
 
 
 # CTF challenges
+# Challenges are classified with categories and difficulties
 class Challenge(models.Model):
     # Challenge title
     title = models.CharField(max_length=30)
-    # Challenge category e.g. Reverse Engineering, Pwn
+    # Challenge category e.g. Reverse, Pwnable, Web
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    # Challenge difficulty e.g. Easy, Medium, Hard
+    # Challenge difficulty e.g. Novice, Beginner, Intermediate
     difficulty = models.ForeignKey(Difficulty, on_delete=models.CASCADE)
     # Challenge description text
     description = RichTextField()
@@ -52,7 +54,7 @@ class Challenge(models.Model):
     solvers = models.ManyToManyField(User, blank=True)
 
     def __str__(self):
-        return self.title
+        return '{} [{}pt] ({})'.format(self.title, self.points, self.difficulty.name)
 
 
 # Flags
@@ -61,10 +63,10 @@ class Flag(models.Model):
     flag = models.CharField(max_length=256)
 
     def __str__(self):
-        return self.flag
+        return '{}: {}'.format(self.challenge.title, self.flag)
 
 
-# Solves:
+# Solves
 class Solve(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     challenge = models.ForeignKey(Challenge, on_delete=models.CASCADE)
